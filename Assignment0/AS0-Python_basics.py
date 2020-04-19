@@ -97,7 +97,7 @@ class Sorter:
                     break
                 arr[j+1] = arr[j]
                 index_to_insert = j
-            arr[index_to_insert] = key_to_insert;
+            arr[index_to_insert] = key_to_insert
 #             print('step {}'.format(i), arr)
         return arr
     
