@@ -52,7 +52,9 @@ Considering length while training through deep neural networks will be significa
 
 We've trained our network with 10,000 training examples whose lengths vary from 2 to 5 and tested with 1,000 test images of length 2 to 7.
 
-While several experiments, we've found the best set of hyper-parameters that make our model perform more accurately and even faster.
+Due to several parameters consisting the ensemble model of ResNet and LSTM, conducting experiments variation was easy.
+
+After several experiments, we've found the best set of hyper-parameters that make our model perform more accurately and even faster.
 
 
 %-------------------------------------------------------------------------
@@ -60,33 +62,6 @@ While several experiments, we've found the best set of hyper-parameters that mak
 Human activity recognition is nowadays an active research field which aims to understand human behaviour and there have been lots of researches to figure out human behaviours. One of the approaches was method consisted of support vector machines (SVMs) and temporal filters of activity probability estimations within a limited time window \cite{haptpaper}. Probability estimation after feature extraction was done by MAP filtering.
 
 Rubén San-Segundo, \etal have implemented system comprising of three main modules: feature extraction, HMMs training and activity recognition. In the training module, 6 HMM modules were being trained to classify human actions with datasets of only six different physical activity types: walking, walking-upstairs, walking-downstairs, sitting, standing and lying down. Due to the lack amount of activity types they've obtained the recognition error rate of 2.5\% \cite{monitoring}.
-
-%-------------------------------------------------------------------------
-\section{Preliminaries}
-
-\subsection{Hidden Markov Model}
-
-
-A hidden Markov model (HMM) allows us to talk about both observed events (like words that we see in the input) and hidden events (like part-of-speech tags) that we think of as causal factors in our probabilistic model. HMM model $\lambda$ contains transition probability matrix $A$, a set of state variables $X$, a sequence of observations $O$, emission probabilities $B$, and an initial probability distribution over states $\pi$.
-
-We can characterize HMM into 3 fundamental problems;
-
-1) Likelihood: given the model $\lambda$, find likelihood $P(O|\lambda)$ whether the observation $O$ is a probable sequence based on $\lambda$.
-
-2) Decoding: given an observation sequence $O$ and an model $\lambda$, discover the best hidden state sequence $X$.
-
-3) Learning: given an observation sequence $O$ and the set of states in $\lambda$, learn the parameters $A$ and $B$.
-
-\subsection{Forward Algorithm}
-
-%\begin{center}
-%\includegraphics[width=1.0\linewidth]{./forward.png}
-%\end{center}
-
-We use algorithm called the forward algorithm to compute likelihood of observed events. It is an algorithm that uses a table to store intermediate values as it builds up the probability of the observation sequence. The forward algorithm computes the observation probability by summing over the probabilities of all possible hidden state paths that could generate the observation sequence \cite{hmm}.
-
-\subsection{Baum-Welch Algorithm}
-The standard algorithm for HMM training is the forward-backward, or Baum-Welch algorithm, a special case of the Expectation-Maximization algorithm (EM). The algorithm will let us train both the transition probabilities $A$ and the emission probabilities $B$ of model $\lambda$.
 
 %-------------------------------------------------------------------------
 \section{Proposed Method}
