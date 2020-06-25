@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.23)  25 JUN 2020 20:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.23)  25 JUN 2020 21:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -470,46 +470,94 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 <./overview.png, id=7, 1364.09625pt x 316.18124pt>
 File: ./overview.png Graphic file (type png)
 <use ./overview.png>
-Package pdftex.def Info: ./overview.png  used on input line 51.
-(pdftex.def)             Requested size: 496.85625pt x 115.16637pt.
+Package pdftex.def Info: ./overview.png  used on input line 52.
+(pdftex.def)             Requested size: 237.13594pt x 54.96104pt.
 <./model.jpg, id=8, 1297.84875pt x 668.4975pt>
 File: ./model.jpg Graphic file (type jpg)
 <use ./model.jpg>
-Package pdftex.def Info: ./model.jpg  used on input line 67.
-(pdftex.def)             Requested size: 347.79785pt x 179.14008pt.
- [1
+Package pdftex.def Info: ./model.jpg  used on input line 65.
+(pdftex.def)             Requested size: 237.13594pt x 122.14003pt.
+<./resnet18.png, id=9, 597.73312pt x 510.40688pt>
+File: ./resnet18.png Graphic file (type png)
+<use ./resnet18.png>
+Package pdftex.def Info: ./resnet18.png  used on input line 72.
+(pdftex.def)             Requested size: 237.13594pt x 202.49246pt.
 
-{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./overview.png 
-(PNG copy)>] [2 <./model.jpg>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 165.
- [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 165.
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+ <./overview.png (PNG copy)> <./model.jpg>]
+<./lstm.png, id=28, 627.84563pt x 501.37312pt>
+File: ./lstm.png Graphic file (type png)
+<use ./lstm.png>
+Package pdftex.def Info: ./lstm.png  used on input line 79.
+(pdftex.def)             Requested size: 237.13594pt x 189.3609pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
+[]\OT1/ptm/m/n/10 Here we de-scribes how we came up with
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
+\OT1/pcr/m/n/10 BetterNet+LSTM \OT1/ptm/m/n/10 model. Com-par-i-son anal-y-sis 
+of
+ []
+
+<./ResNet.png, id=29, 1355.0625pt x 903.375pt>
+File: ./ResNet.png Graphic file (type png)
+<use ./ResNet.png>
+Package pdftex.def Info: ./ResNet.png  used on input line 88.
+(pdftex.def)             Requested size: 237.13594pt x 158.07921pt.
+<./BetterNet+LSTM.png, id=30, 433.62pt x 289.08pt>
+File: ./BetterNet+LSTM.png Graphic file (type png)
+<use ./BetterNet+LSTM.png>
+Package pdftex.def Info: ./BetterNet+LSTM.png  used on input line 92.
+(pdftex.def)             Requested size: 237.13594pt x 158.09023pt.
+
+Underfull \hbox (badness 1616) in paragraph at lines 96--97
+\OT1/ptm/m/n/10 per-forms teacher forcer learns tem-po-ral pat-terns from
+ []
+
+
+Underfull \hbox (badness 5533) in paragraph at lines 96--97
+\OT1/ptm/m/n/10 graphs with those two mod-els, we con-cluded that
+ []
+
+[2 <./resnet18.png> <./lstm.png> <./ResNet.png> <./BetterNet+LSTM.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
+\OT1/ptm/m/n/10 Mel-lon Uni-ver-sity Cy-Lab". \OT1/ptm/m/it/10 www.cylab.cmu.ed
+u.
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 126.
+[3
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 126.
  (./egpaper_final.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 165.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 165.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 165.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 126.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 126.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 126.
  ) 
 Here is how much of TeX's memory you used:
- 7070 strings out of 480994
- 103234 string characters out of 5916032
- 370691 words of memory out of 5000000
- 22371 multiletter control sequences out of 15000+600000
- 553677 words of font info for 75 fonts, out of 8000000 for 9000
+ 7073 strings out of 480994
+ 103405 string characters out of 5916032
+ 369479 words of memory out of 5000000
+ 22380 multiletter control sequences out of 15000+600000
+ 551536 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,31p,655b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,9n,31p,795b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2019/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1
-/public/amsfonts/symbols/msam10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw
-/courier/ucrb8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/courier/ucrr8a.
-pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/20
-19/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2019/texmf-dist/font
-s/type1/urw/times/utmri8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/zapfd
-ing/uzdr.pfb>
-Output written on egpaper_final.pdf (3 pages, 244365 bytes).
+f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fo
+nts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/ti
+mes/utmb8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:
+/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on egpaper_final.pdf (3 pages, 421155 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
- 25 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 75 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
+ 18 named destinations out of 1000 (max. 500000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
