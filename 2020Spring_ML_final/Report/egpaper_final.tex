@@ -1,4 +1,4 @@
-\documentclass[10pt,twocolumn,letterpaper]{article}
+\documentclass[10pt,letterpaper]{article}
 
 \usepackage{cvpr}
 \usepackage{times}
@@ -30,7 +30,7 @@
 \begin{document}
 
 %%%%%%%%% TITLE
-\title{Final Project. Captcha Image Recognition using ResNet and LSTM}
+\title{Final Project. CAPTCHA Image Recognition using CNN and LSTM}
 
 \author{Sangjun Son\\
 Seoul National University\\
@@ -42,44 +42,38 @@ Department of Computer Science and Engineering\\
 
 \section{Introduction}
 
-Hidden Markov Model has such a good strength in analysing sequential data, and had been widely used in language model, part-of-speech tagging and named entity recognition \cite{ratgo}. Based on Markov process, HMM infers probability distributions of the model from observations and find the most likely results so far. It is useful for cases unable to observe all datasets and only able to get its causal evidences, and can be applied in many different data restoring fields \cite{hmmwiki}, e.g. multiple DNA sequence alignment, protein secondary structure prediction \cite{biology} and speech recognition. Datasets being used in HMM modelling should be time-serial. For example, speech recognition has temporal structure consisted of statistical models and can be encoded as a sequence of spectral vectors spanning the audio frequency range \cite{speechrecognition}.
 
-Likewise, we'd like to use temporal human action sensor data to make Human Action Recognition system (HAR) using HMM. We've trained our model with  Human Activities and Postural Transitions datasets (HAPT) produced by Jorge L, \etal \cite{hapt}. Measurement was done by 30 volunteers carrying a waist-mounted smart phone with embedded inertial sensors. Dataset includes 61 experiments with 30 participants and measured in 50Hz frequency and about 400s duration per experiment. Each experiment contains 12 types of human actions like standing, walking down, \etc. We separated into 12 part of data so we can easily train our model by action type. Eventually, we've got 1,214 examples and randomly split as train and test dataset as 9:1 ratio respectively.
+Everyone hates CAPTCHAs — those annoying images that contain text you have to type in before you can access a website \cite{captcha}. A CAPTCHA (an acronym for "Completely Automated Public Turing test to tell Computers and Humans Apart") is a type of challenge–response test used in computing to determine whether or not the user is human \cite{recaptcha}. It is to prevent computers from automatically filling out forms by verifying that you are not a robot. But with the rise of deep learning and computer vision, decoding CAPTCHA seems to be possible and some of those systems are even more better than human.
 
-Our goal is to recognize characters from the captcha image.
-Each captcha image has a variable length of characters. 
-Considering length while training through deep neural networks will be significant works.
+Given an image, how can we recognize characters from the CAPTCHA image? Since each CAPTCHA image has a variable length of characters, considering length will be a significant work while training through deep neural networks. If we can split the image apart so that that each letter is a separate image, remaining work is just to train the neural network to recognize a single letter at a time\cite{captcha}.
 
-We've trained our network with 10,000 training examples whose lengths vary from 2 to 5 and tested with 1,000 test images of length 2 to 7.
+\begin{center}
+\includegraphics[width=1\linewidth]{./overview.png}
+\end{center}
 
-Due to several parameters consisting the ensemble model of ResNet and LSTM, conducting experiments variation was easy.
-
-After several experiments, we've found the best set of hyper-parameters that make our model perform more accurately and even faster.
+We've trained our network with 10,000 training examples whose lengths are in 2 $\sim$ 5 and tested with 1,000 test images of length 2 $\sim$ 7. Due to several parameters consisting the ensemble model of CNN and LSTM, we've conduct various experiments. After several experiments, we've found the best set of hyper-parameters that make our model perform more accurately and even faster.
 
 
 %-------------------------------------------------------------------------
 \section{Related Works}
-Human activity recognition is nowadays an active research field which aims to understand human behaviour and there have been lots of researches to figure out human behaviours. One of the approaches was method consisted of support vector machines (SVMs) and temporal filters of activity probability estimations within a limited time window \cite{haptpaper}. Probability estimation after feature extraction was done by MAP filtering.
 
-Rubén San-Segundo, \etal have implemented system comprising of three main modules: feature extraction, HMMs training and activity recognition. In the training module, 6 HMM modules were being trained to classify human actions with datasets of only six different physical activity types: walking, walking-upstairs, walking-downstairs, sitting, standing and lying down. Due to the lack amount of activity types they've obtained the recognition error rate of 2.5\% \cite{monitoring}.
+CATCHA recognition is one part of temporal pattern recognition projects. Simiarly, there are numerous examples like image captioning, speech recognition, part-of-speech tagging. Using ResNet and LSTM modules, which are the representatives of CNN and RNN methods, we can extract useful features from an image and continuously learning them over time.
 
 %-------------------------------------------------------------------------
 \section{Proposed Method}
-This section describes overall flows of our proposed method, \texttt{jerk8vel8iter50}. Feature extraction and learning with multinomial HMM are the key concepts of our model.
+This section describes overall flows of our proposed method, \texttt{BetterNet+LSTM}. Feature extraction and learning the temporal patterns are the key concepts of our model.
 
-\subsection{Feature extraction}
-Since HAR datasets are given as 3 dimensional vector sets, we have to figure out what feature metric would describe our hidden states of model. We'd like to transform 3 dimensional vectors of acceleration and angular speed into a single metric, so we can train these observations to our HMM model. Figure below shows how we can classify vectors into 8 spaces, A to H, and in number, 0 to 7 \wrt.
+\begin{center}
+\includegraphics[width=0.7\linewidth]{./model.jpg}
+\end{center}
+
+\subsection{Feature extraction by BetterNet}
+Since image vectors contain lots of information, we have to extract meaningful features. Pre-training inputs through ResNet, we
 
 
-From acceleration observation data, we can apparently determine the direction of jerk, time derivative of acceleration by subtracting neighbouring values \cite{jerkwiki}.
-
-
-Inferring from the name of our proposed model \texttt{jerk8vel8iter50}, it has 8 jerk states and 8 of those in angular velocity, which is simply determined by signs of vector coordinates. Feature metric is only the measure multiply with these two. For instances, if signs of jerk and angular velocity are $(+,-,+)$ and $(-,-,+)$ each, the measure will be 20 because the state of jerk would be 4(E) and that of angular velocity would be 5(F).
-
-\subsection{Multinomial HMM}
-Using model selection package in sklearn \cite{sklearn}, original set was split into train and test data. Every data entity has its feature metric which will be the observation input to HMM model $\lambda$. We differentiated into 12 models by activity types and each model learns corresponding activity and classifies test data set with one vs rest method (OVR) with maximum likelihood. \texttt{jerk8vel8iter50} was trained with maximum iterations of 50.
-
-As observation values are all in discrete number, Multinomial HMM from \textit{hmmlearn} was selected and values of hyper-parameters were determined through various empirical approaches. We've finally got \texttt{jerk8vel8iter50} model with 92.62\% as test accuracy and 24623.64s as total training time. Figures below show a table of 12 models' training time, and some of examples when estimates went wrong. 9 misclassified actions out of 122 examples were detected and plotted how does these pairs differ in state sequences.
+\subsection{Learning temporal patterns by LSTM}
+The pretrained CNN extracts the feature vector from a given input image. The feature vector is linearly transformed to have the same dimension as the input dimension of the LSTM network.
+Using these source and target sequences and the feature vector, the LSTM decoder is trained as a language model conditioned on the feature vector \cite{image-captioning}.
 
 %-------------------------------------------------------------------------
 \section{Empirical Analysis}
@@ -120,11 +114,14 @@ We've trained this model with maximum training iteration of 50 and \texttt{jerk8
 
 \begin{thebibliography}{9}
 
-\bibitem{ratgo} 
-ratgo’s blog
+\bibitem{captcha} 
+Adam Geitgey, ``How to break a CAPTCHA system in 15 minutes with Machine Learning", Dec. 2017
 
-\bibitem{hmmwiki} 
-Wikipedia, Hidden Markov model
+\bibitem{recaptcha} 
+Adam Geitgey, ``The reCAPTCHA Project – Carnegie Mellon University CyLab". {\textit{www.cylab.cmu.edu. Archived}}, Jan. 2017
+
+\bibitem{image-captioning} 
+yunjey, ``Image Captioning", {\textit{GitHub pytorch-tutorial}}, Nov. 2018
 
 \bibitem{biology} 
 Byung-Jun Yoon, 
